@@ -1,5 +1,6 @@
 import tkinter as tk
 
+from .add import NewProcedureWindow
 from .hzzobod import HZZOBodWindow
 
 class MainWindow(tk.Frame):
@@ -39,8 +40,9 @@ class MainWindow(tk.Frame):
 	
 	
 	def addProcedure(self):
-		pass
-	
+		addProcedureWindow = NewProcedureWindow(self.master, title = "Dodavanje nove pretrage")
+		if not addProcedureWindow.result:
+			print("Dodana nova pretraga")
 	
 	def editProcedure(self):
 		pass
