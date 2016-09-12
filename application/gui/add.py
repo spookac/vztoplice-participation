@@ -4,6 +4,8 @@ import os
 from tkinter import messagebox
 from .dialog import SimpleDialog
 
+from ..jsondb.model import Procedure
+
 class NewProcedureWindow(SimpleDialog):
 
 	def __init__(self, parent, title=None):
@@ -67,7 +69,7 @@ class NewProcedureWindow(SimpleDialog):
 				return 0
 		
 	def apply(self):
-		pass
+		self.result = Procedure(self.sifra, self.ime, self.hzzobod, self.privatno, self.category)
 		
 	def applyandnew(self):
-		pass
+		self.result = Procedure(self.sifra, self.ime, self.hzzobod, self.privatno, self.category)

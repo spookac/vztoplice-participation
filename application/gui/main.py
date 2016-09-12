@@ -41,8 +41,8 @@ class MainWindow(tk.Frame):
 	
 	def addProcedure(self):
 		addProcedureWindow = NewProcedureWindow(self.master, title = "Dodavanje nove pretrage")
-		if not addProcedureWindow.result:
-			print("Dodana nova pretraga")
+		if addProcedureWindow.result:
+			print(addProcedureWindow.result.id)
 	
 	def editProcedure(self):
 		pass

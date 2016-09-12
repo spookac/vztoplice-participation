@@ -4,7 +4,7 @@ class Procedure:
 		self.name = name
 		self.hzzobod = hzzobod
 		self.price = price
-		if category:
+		if category and category.index("end") != 0:
 			self.category = category
 
 class JSONDB:
