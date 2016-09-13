@@ -1,8 +1,8 @@
 import json
 import os
 
-from model import JSONDB
-from model import Procedure
+from .model import JSONDB
+from .model import Procedure
 
 class DbOperations:
 	def __init__(self, filename):
@@ -16,14 +16,59 @@ class DbOperations:
 		return JSONDB(data["hzzo-factor"], data["procedures"])
 	
 	def saveData(self, data):
-		with open(self.filename) as jsonFile:
-			json.dump(data, jsonFile)
+		with open(self.filename, "w+") as jsonFile:
+			json.dump(data, jsonFile, sort_keys = True, indent = 4, ensure_ascii = False)
 		
-	def addProcedure(self, procedure):
+	def getHzzoBod(self):
 		data = self.loadData()
-		data.procedures.append(JSONDB.fromProcedure(procedure))
+		return data.hzzobod
+	
+	def updateHzzoBod(self, hzzoBodValue):
+		data = self.loadData()
+		data.hzzobod = hzzoBodValue
 		dataToSave = data.toJson()
 		self.saveData(dataToSave)
+	
+	def addProcedure(self, procedure):
+		data = self.loadData()
+		if not self.procedureExists(data, procedure):
+			data.procedures.append(JSONDB.fromProcedure(procedure))
+			dataToSave = data.toJson()
+			self.saveData(dataToSave)
+		else:
+			self.updateProcedure(procedure)
+		
+	def updateProcedure(self, procedure):
+		data = self.loadData()
+		currentProcedure = self.findProcedureByIdOrName(data, procedure.id, procedure.name)
+		if currentProcedure != None:
+			currentProcedure[0].id = procedure.id
+			currentProcedure[0].name = procedure.name
+			currentProcedure[0].hzzobod = procedure.hzzobod
+			currentProcedure[0].price = procedure.price
+			currentProcedure[0].category = procedure.category
+			data.procedures[currentProcedure[1]] = JSONDB.fromProcedure(currentProcedure[0])
+		dataToSave = data.toJson()
+		self.saveData(dataToSave)		
+	
+	def procedureExists(self, data, procedure):
+		for proc in data.procedures:
+			procTemp = JSONDB.toProcedure(proc)
+			if procTemp.id == procedure.id or procTemp.name == procedure.name:
+				return True
+				break
+		return False
+	
+	def findProcedureByIdOrName(self, data, id=None, name=None):
+		if not id and not name:
+			raise ValueError("At least one of the parameters 'id' or 'name' must be provided")
+		i = 0
+		for proc in data.procedures:
+			procTemp = JSONDB.toProcedure(proc)
+			if procTemp.id == id or procTemp.name == name:
+				return list([procTemp, i])
+			i = i + 1
+		return None
 		
 		
 if __name__ == "__main__":
@@ -40,5 +85,5 @@ if __name__ == "__main__":
 		print("HZZO bod: ", repr(proc.hzzobod))
 		print("Price: ", repr(proc.price))
 		print("Category: ", repr(proc.category))
-	newProc = Procedure("LB004","Ime procedure", 0.43, 45.05)
+	newProc = Procedure("LB004","Ime procedure", 0.45, 49.02)
 	db.addProcedure(newProc)

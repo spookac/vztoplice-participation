@@ -2,9 +2,15 @@ import tkinter as tk
 import os
 
 from tkinter import messagebox
+from tkinter import StringVar
 from .dialog import SimpleDialog
 
 class HZZOBodWindow(SimpleDialog):
+	
+	def __init__(self, parent, title=None, hzzoFactor=0):
+		self.hzzobod = StringVar()
+		self.hzzobod.set(hzzoFactor)
+		SimpleDialog.__init__(self, parent, title)
 	
 	def createButtons(self):
 		box = tk.Frame(self)
@@ -22,7 +28,7 @@ class HZZOBodWindow(SimpleDialog):
 	
 	def body(self, master):
 		tk.Label(master, text = "HZZO Bod:").grid(row = 0, column = 0)
-		self.bod = tk.Entry(master)
+		self.bod = tk.Entry(master, textvariable=self.hzzobod)
 		self.bod.grid(row = 0, column = 1) #Put it in grid after the value is assigned, otherwise it will be None
 	
 	

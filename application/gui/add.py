@@ -15,6 +15,7 @@ class NewProcedureWindow(SimpleDialog):
 		self.hzzobod=None
 		self.privatno=None
 		self.category=None
+		self.repeat=False
 	
 	def createButtons(self):
 		box = tk.Frame(self)
@@ -69,7 +70,14 @@ class NewProcedureWindow(SimpleDialog):
 				return 0
 		
 	def apply(self):
-		self.result = Procedure(self.sifra, self.ime, self.hzzobod, self.privatno, self.category)
-		
+		self.result = [Procedure(self.sifra.get(), self.ime.get(), float(self.hzzobod.get()), float(self.privatno.get()), self.category.get()), False]
+	
 	def applyandnew(self):
-		self.result = Procedure(self.sifra, self.ime, self.hzzobod, self.privatno, self.category)
+		if not self.validate():
+			self.initial_focus.focus_set() # put focus back
+			return
+		self.withdraw() #Hide the window
+		self.update_idletasks() #Update all tasks
+		self.result = [Procedure(self.sifra.get(), self.ime.get(), float(self.hzzobod.get()), float(self.privatno.get()), self.category.get()), True]
+		self.cancel() #Destroy window by calling cancel method
+		

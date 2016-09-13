@@ -2,4 +2,4 @@ from application.gui import Gui
 
 
 gui = Gui("640", "480")
-gui.startApplication()
+gui.startApplication("db/procedures.json")
