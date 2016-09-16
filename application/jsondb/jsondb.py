@@ -7,7 +7,6 @@ from .model import Procedure
 class DbOperations:
 	def __init__(self, filename):
 		self.filename = filename
-		self.data = None
 	
 	def loadData(self):
 		data = None
@@ -70,6 +69,12 @@ class DbOperations:
 			i = i + 1
 		return None
 		
+	def getProceduresASProceduresList(self):
+		procedurelist = []
+		jsondb = loadData()
+		for procedure in jsondb.procedures:
+			procedurelist.append(toProcedure(procedure))
+		return procedurelist
 		
 if __name__ == "__main__":
 	db = DbOperations("db/procedures.json")

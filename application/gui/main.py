@@ -1,6 +1,7 @@
 import tkinter as tk
 
 from .add import NewProcedureWindow
+from .edit import EditProcedureWindow
 from .hzzobod import HZZOBodWindow
 
 from ..jsondb import jsondb
@@ -51,4 +52,4 @@ class MainWindow(tk.Frame):
 				self.addProcedure()
 	
 	def editProcedure(self):
-		pass
+		editProcedureWindow = EditProcedureWindow(self.master, title = "Uređivanje pretraga")

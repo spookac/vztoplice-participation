@@ -1,12 +1,54 @@
 {
-	"hzzo-factor":55,
-	"procedures": [
-		{"id":"LB002","name":"Vađenje krvi - kapilarno","hzzo-score":0.29,"hospital-price":8,"category":""},
-		{"id":"LB001","name":"Uzimanje urina","hzzo-score":0.19,"hospital-price":0,"category":""},
-		{"id":"LB003","name":"Vađenje krvi - vensko","hzzo-score":0.29,"hospital-price":18,"category":""},
-		{"id":"LB041","name":"S-Glukoza","hzzo-score":0.21,"hospital-price":15,"category":"Metaboliti"},
-		{"id":"LB553","name":"S-OGTT","hzzo-score":0.67,"hospital-price":63,"category":"Metaboliti"},
-		{"id":"LB305","name":"S-Trigliceridi","hzzo-score":0.24,"hospital-price":63,"category":"Lipidogram"},
-		{"id":"LB302","name":"S-Kolesterol-ukupni","hzzo-score":0.24,"hospital-price":14,"category":"Lipidogram"}
-	]
+    "hzzo-factor": 55.0,
+    "procedures": [
+        {
+            "category": null,
+            "hospital-price": 8,
+            "hzzo-score": 0.29,
+            "id": "LB002",
+            "name": "Vađenje krvi - kapilarno"
+        },
+        {
+            "category": null,
+            "hospital-price": 0,
+            "hzzo-score": 0.19,
+            "id": "LB001",
+            "name": "Uzimanje urina"
+        },
+        {
+            "category": null,
+            "hospital-price": 18,
+            "hzzo-score": 0.29,
+            "id": "LB003",
+            "name": "Vađenje krvi - vensko"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 15,
+            "hzzo-score": 0.21,
+            "id": "LB041",
+            "name": "S-Glukoza"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 63,
+            "hzzo-score": 0.67,
+            "id": "LB553",
+            "name": "S-OGTT"
+        },
+        {
+            "category": "Lipidogram",
+            "hospital-price": 63,
+            "hzzo-score": 0.24,
+            "id": "LB305",
+            "name": "S-Trigliceridi"
+        },
+        {
+            "category": "Lipidogram",
+            "hospital-price": 14,
+            "hzzo-score": 0.24,
+            "id": "LB302",
+            "name": "S-Kolesterol-ukupni"
+        }
+    ]
 }
