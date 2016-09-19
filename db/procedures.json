@@ -16,8 +16,8 @@
             "name": "Uzimanje urina"
         },
         {
-            "category": null,
-            "hospital-price": 18,
+            "category": "None",
+            "hospital-price": 20.0,
             "hzzo-score": 0.29,
             "id": "LB003",
             "name": "Va\u0111enje krvi - vensko"
@@ -51,11 +51,11 @@
             "name": "S-Kolesterol-ukupni"
         },
         {
-            "category": null,
-            "hospital-price": 200.69,
-            "hzzo-score": 0.55,
+            "category": "None",
+            "hospital-price": 22.5,
+            "hzzo-score": 0.51,
             "id": "LB998",
-            "name": "\u010celo moje malo, \u0111ava te odnija"
+            "name": "\u010celo moje malo, \u0111ava te odni'a jo\u0161 tri puta"
         }
     ]
 }

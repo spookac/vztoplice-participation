@@ -9,6 +9,10 @@ from ..jsondb import jsondb
 class MainWindow(tk.Frame):
 	def __init__(self, master=None, dbHandler=None):
 		self.dbHandler = dbHandler
+		self.listBox = None
+		#Populate procedures
+		self.nonChosenProcedures = self.dbHandler.getProceduresASProceduresList()
+		self.chosenProcedures = None
 		
 		tk.Frame.__init__(self, master)
 		self.pack()
@@ -17,6 +21,10 @@ class MainWindow(tk.Frame):
 			self.master = master
 		
 		self.createMenu()
+		
+		body = tk.Frame(self)
+		self.initial_focus = self.body(body) #Set initial focus to the body of the window
+		body.pack(padx=5, pady=5, anchor = "nw")
 		
 	
 	def createMenu(self):
@@ -37,6 +45,17 @@ class MainWindow(tk.Frame):
 		
 		self.master.config(menu = menubar)
 	
+	def body(self, master):
+		mainFrame = tk.Frame(master)
+		tk.Label(mainFrame, text = "Kliknite dvaput na pretragu kako biste ju dodali u izračun", foreground = "red").grid(row = 0, column = 0, sticky = "w", columnspan=2)
+		self.listBox = tk.Listbox(mainFrame, width=40)
+		self.listBox.grid(row = 1, column = 0, rowspan = 10)
+		chosenFrame = tk.Frame(mainFrame)
+		chosenFrame.grid(row = 1, column = 1)
+		tk.Label(chosenFrame, text = "Ovdje idu izabrane pretrage", foreground = "red").grid(row=0, column=0)
+		mainFrame.pack(anchor = "w", fill="both", expand = True)
+		#Set procedures
+		self._updateListbox()
 	
 	def editBod(self):
 		hzzoBodWindow = HZZOBodWindow(self.master, title = "HZZO bod", hzzoFactor = self.dbHandler.getHzzoBod())
@@ -53,3 +72,8 @@ class MainWindow(tk.Frame):
 	
 	def editProcedure(self):
 		editProcedureWindow = EditProcedureWindow(self.master, title = "Uređivanje pretraga", dbHandler = self.dbHandler)
+		
+	def _updateListbox(self):
+		self.listBox.delete(0,"end")
+		for procedure in self.nonChosenProcedures:
+			self.listBox.insert("end",procedure)

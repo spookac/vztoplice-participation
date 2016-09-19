@@ -18,7 +18,3 @@ class Gui:
 		self.applicationRoot.resizable(False, False)
 		window = MainWindow(self.applicationRoot, self.dbHandler)
 		self.applicationRoot.mainloop()
-	
-	def provideData(self, jsonData):
-		#TODO: Implementation
-		pass
