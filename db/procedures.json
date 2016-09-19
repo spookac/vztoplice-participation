@@ -1,12 +1,12 @@
 {
-    "hzzo-factor": 55.0,
+    "hzzo-factor": 55,
     "procedures": [
         {
             "category": null,
             "hospital-price": 8,
             "hzzo-score": 0.29,
             "id": "LB002",
-            "name": "Vađenje krvi - kapilarno"
+            "name": "Va\u0111enje krvi - kapilarno"
         },
         {
             "category": null,
@@ -20,7 +20,7 @@
             "hospital-price": 18,
             "hzzo-score": 0.29,
             "id": "LB003",
-            "name": "Vađenje krvi - vensko"
+            "name": "Va\u0111enje krvi - vensko"
         },
         {
             "category": "Metaboliti",
@@ -49,6 +49,13 @@
             "hzzo-score": 0.24,
             "id": "LB302",
             "name": "S-Kolesterol-ukupni"
+        },
+        {
+            "category": null,
+            "hospital-price": 200.69,
+            "hzzo-score": 0.55,
+            "id": "LB998",
+            "name": "\u010celo moje malo, \u0111ava te odnija"
         }
     ]
 }

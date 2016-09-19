@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class Procedure:
 	def __init__(self, id, name, hzzobod, price, category=None):
 		self.id = id
@@ -7,6 +9,9 @@ class Procedure:
 		self.category=None
 		if category:
 			self.category = category
+	
+	def __str__(self):
+		return self.name
 
 class JSONDB:
 	def __init__(self, hzzobod, procedures):

@@ -6,7 +6,7 @@ class SimpleDialog(tk.Toplevel):
 		tk.Toplevel.__init__(self, parent) #Set this window as temporary window of its parent
 		self.transient(parent)
 		if title:
-			self.title = title
+			self.title(title)
 		self.parent = parent #Set parent to parent window
 		self.result = None #Assign initial result of dialog window
 		#Create body and set initial focus

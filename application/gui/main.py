@@ -52,4 +52,4 @@ class MainWindow(tk.Frame):
 				self.addProcedure()
 	
 	def editProcedure(self):
-		editProcedureWindow = EditProcedureWindow(self.master, title = "Uređivanje pretraga")
+		editProcedureWindow = EditProcedureWindow(self.master, title = "Uređivanje pretraga", dbHandler = self.dbHandler)

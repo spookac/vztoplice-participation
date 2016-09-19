@@ -16,7 +16,7 @@ class DbOperations:
 	
 	def saveData(self, data):
 		with open(self.filename, "w+") as jsonFile:
-			json.dump(data, jsonFile, sort_keys = True, indent = 4, ensure_ascii = False)
+			json.dump(data, jsonFile, sort_keys = True, indent = 4, ensure_ascii = True)
 		
 	def getHzzoBod(self):
 		data = self.loadData()
@@ -71,9 +71,9 @@ class DbOperations:
 		
 	def getProceduresASProceduresList(self):
 		procedurelist = []
-		jsondb = loadData()
+		jsondb = self.loadData()
 		for procedure in jsondb.procedures:
-			procedurelist.append(toProcedure(procedure))
+			procedurelist.append(JSONDB.toProcedure(procedure))
 		return procedurelist
 		
 if __name__ == "__main__":
