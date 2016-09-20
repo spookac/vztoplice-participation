@@ -17,7 +17,6 @@ class MainWindow(tk.Frame):
 		#GUI elements
 		self.listBox = None
 		self.chosenFrame=None
-		self.chosenProcedures=[]
 		
 		tk.Frame.__init__(self, master)
 		self.pack()
@@ -61,10 +60,6 @@ class MainWindow(tk.Frame):
 		self.listBox = tk.Listbox(master, width=40, height=15)
 		self.listBox.bind("<Double-Button-1>", self._addProcedureToList)
 		self.listBox.grid(in_=master, sticky = "w", row=1, column=0)
-		#self.listBox.grid(row = 1, column = 0, rowspan = 10)
-		#chosenFrame = tk.Frame(mainFrame)
-		#chosenFrame.grid(row = 1, column = 1)
-		#tk.Label(chosenFrame, text = "Ovdje idu izabrane pretrage", foreground = "red").grid(row=0, column=0)
 		tk.Label(master, text = "Odabrane pretrage").grid(row=0, column=1, sticky="n")
 		self.chosenFrame = tk.Frame(master)
 		self.chosenFrame.columnconfigure(0, weight=1)
@@ -91,14 +86,6 @@ class MainWindow(tk.Frame):
 	
 	def editProcedure(self):
 		editProcedureWindow = EditProcedureWindow(self.master, title = "Uređivanje pretraga", dbHandler = self.dbHandler)
-		
-	def _updateListbox(self):
-		self.listBox.delete(0,"end")
-		del self.listBoxIndexes[:]
-		for procedure in self.procedures:
-			if not procedure[1]:
-				self.listBox.insert("end",procedure[0])
-				self.listBoxIndexes.append(procedure[2])
 	
 	def _reset(self):
 		tempProc = self.dbHandler.getProceduresASProceduresList()
@@ -107,16 +94,25 @@ class MainWindow(tk.Frame):
 		self._updateListbox()
 		self._populateChosenProcedures()
 	
-	def _removeProcedureFromList(self, index, event=None):
-		self.procedures[index][1]=False
-		self._updateListbox()
-	
 	def _addProcedureToList(self, event=None):
 		lbIndex = int(self.listBox.curselection()[0])
 		realIndex = self.listBoxIndexes[lbIndex]
 		self.procedures[realIndex][1]=True
 		self._updateListbox()
 		self._populateChosenProcedures()
+	
+	def __removeProcedureFromList(self, event=None, index=None):
+		self.procedures[index][1]=False
+		self._updateListbox()
+		self._populateChosenProcedures()
+	
+	def _updateListbox(self):
+		self.listBox.delete(0,"end")
+		del self.listBoxIndexes[:]
+		for procedure in self.procedures:
+			if not procedure[1]:
+				self.listBox.insert("end",procedure[0])
+				self.listBoxIndexes.append(procedure[2])
 	
 	def _populateChosenProcedures(self):
 		index = 0
@@ -132,8 +128,3 @@ class MainWindow(tk.Frame):
 				w.grid(row=index, column=2, sticky="ne")
 				w.bind("<Button-1>", _removeProcedureFromList)
 				index+=1
-	
-	def __removeProcedureFromList(self, event=None, index=None):
-		self.procedures[index][1]=False
-		self._updateListbox()
-		self._populateChosenProcedures()
