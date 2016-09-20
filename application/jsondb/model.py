@@ -14,12 +14,14 @@ class Procedure:
 		return self.name
 
 class JSONDB:
-	def __init__(self, hzzobod, procedures):
+	def __init__(self, hzzobod, procedures, percentage):
 		self.hzzobod = hzzobod
 		self.procedures = procedures
+		self.percentage = percentage
 	
 	def toJson(self):
 		json = {}
+		json["participation-percentage"] = self.percentage
 		json["hzzo-factor"] = self.hzzobod
 		json["procedures"] = []
 		for i in range(0,len(self.procedures)):

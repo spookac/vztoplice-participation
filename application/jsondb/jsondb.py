@@ -12,7 +12,7 @@ class DbOperations:
 		data = None
 		with open(self.filename) as jsondata:
 			data = json.load(jsondata, encoding="utf-8")
-		return JSONDB(data["hzzo-factor"], data["procedures"])
+		return JSONDB(data["hzzo-factor"], data["procedures"], data["participation-percentage"])
 	
 	def saveData(self, data):
 		with open(self.filename, "w+") as jsonFile:
@@ -22,9 +22,19 @@ class DbOperations:
 		data = self.loadData()
 		return data.hzzobod
 	
+	def getParticipationPercentage(self):
+		data = self.loadData()
+		return data.percentage
+	
 	def updateHzzoBod(self, hzzoBodValue):
 		data = self.loadData()
 		data.hzzobod = hzzoBodValue
+		dataToSave = data.toJson()
+		self.saveData(dataToSave)
+		
+	def updateParticipationPercentage(self, participationPercentage):
+		data = self.loadData()
+		data.percentage = participationPercentage
 		dataToSave = data.toJson()
 		self.saveData(dataToSave)
 	

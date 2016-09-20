@@ -1,5 +1,6 @@
 {
-    "hzzo-factor": 55,
+    "hzzo-factor": 55.0,
+    "participation-percentage": 25.0,
     "procedures": [
         {
             "category": null,
