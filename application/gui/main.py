@@ -10,12 +10,14 @@ from ..jsondb import jsondb
 class MainWindow(tk.Frame):
 	def __init__(self, master=None, dbHandler=None):
 		self.dbHandler = dbHandler
-		self.listBox = None
+		
 		self.tempProc = None
 		self.listBoxIndexes = []
 		
-		#Populate procedures
-		self._reset()
+		#GUI elements
+		self.listBox = None
+		self.chosenFrame=None
+		self.chosenProcedures=[]
 		
 		tk.Frame.__init__(self, master)
 		self.pack()
@@ -27,8 +29,13 @@ class MainWindow(tk.Frame):
 		
 		body = tk.Frame(self)
 		self.initial_focus = self.body(body) #Set initial focus to the body of the window
-		body.pack(padx=5, pady=5, anchor = "nw")
+		#body.pack(padx=5, pady=5, fill="both", expand=1, side="left")
+		body.columnconfigure(0, weight=1, minsize=310)
+		body.columnconfigure(1, weight=1, minsize=310)
+		body.grid(padx=10, pady=10)
 		
+		#Populate procedures
+		self._reset()
 	
 	def createMenu(self):
 		menubar = tk.Menu(self)
@@ -50,17 +57,20 @@ class MainWindow(tk.Frame):
 		self.master.config(menu = menubar)
 	
 	def body(self, master):
-		mainFrame = tk.Frame(master)
-		tk.Label(mainFrame, text = "Kliknite dvaput na pretragu kako biste ju dodali u izračun", foreground = "red").grid(row = 0, column = 0, sticky = "w", columnspan=2)
-		self.listBox = tk.Listbox(mainFrame, width=40)
+		tk.Label(master, text = "Kliknite dvaput na pretragu kako biste ju dodali u izračun", foreground = "red").grid(row = 0, column = 0, sticky = "w", columnspan=2, in_=master)
+		self.listBox = tk.Listbox(master, width=40, height=15)
 		self.listBox.bind("<Double-Button-1>", self._addProcedureToList)
-		self.listBox.grid(row = 1, column = 0, rowspan = 10)
-		chosenFrame = tk.Frame(mainFrame)
-		chosenFrame.grid(row = 1, column = 1)
-		tk.Label(chosenFrame, text = "Ovdje idu izabrane pretrage", foreground = "red").grid(row=0, column=0)
-		mainFrame.pack(anchor = "w", fill="both", expand = True)
-		#Set procedures
-		self._updateListbox()
+		self.listBox.grid(in_=master, sticky = "w", row=1, column=0)
+		#self.listBox.grid(row = 1, column = 0, rowspan = 10)
+		#chosenFrame = tk.Frame(mainFrame)
+		#chosenFrame.grid(row = 1, column = 1)
+		#tk.Label(chosenFrame, text = "Ovdje idu izabrane pretrage", foreground = "red").grid(row=0, column=0)
+		tk.Label(master, text = "Odabrane pretrage").grid(row=0, column=1, sticky="n")
+		self.chosenFrame = tk.Frame(master)
+		self.chosenFrame.columnconfigure(0, weight=1)
+		self.chosenFrame.columnconfigure(1, weight=1)
+		self.chosenFrame.columnconfigure(2, weight=1)
+		self.chosenFrame.grid(in_=master, row=1, column=1, sticky="n")
 	
 	def editBod(self):
 		hzzoBodWindow = FloatEditWindow(self.master, title = "Uređivanje HZZO boda", floatNumber = self.dbHandler.getHzzoBod())
@@ -94,6 +104,8 @@ class MainWindow(tk.Frame):
 		tempProc = self.dbHandler.getProceduresASProceduresList()
 		self.procedures = [[procedure, False, index] for index, procedure in enumerate(tempProc)]
 		del self.listBoxIndexes[:]
+		self._updateListbox()
+		self._populateChosenProcedures()
 	
 	def _removeProcedureFromList(self, index, event=None):
 		self.procedures[index][1]=False
@@ -104,3 +116,24 @@ class MainWindow(tk.Frame):
 		realIndex = self.listBoxIndexes[lbIndex]
 		self.procedures[realIndex][1]=True
 		self._updateListbox()
+		self._populateChosenProcedures()
+	
+	def _populateChosenProcedures(self):
+		index = 0
+		for widget in self.chosenFrame.winfo_children():
+			widget.destroy()
+		for procedure in self.procedures:
+			if procedure[1]:
+				tk.Label(self.chosenFrame, text = procedure[0].name).grid(row=index, column=0, sticky="nw")
+				tk.Label(self.chosenFrame, text = (procedure[0].price, "kn")).grid(row=index, column=1, sticky="ne")
+				def _removeProcedureFromList(event, self=self, index=procedure[2]): #To be able to give index to callback method
+					return self.__removeProcedureFromList(event,index)
+				w = tk.Label(self.chosenFrame, text = "Obriši", foreground="blue", cursor="hand2")
+				w.grid(row=index, column=2, sticky="ne")
+				w.bind("<Button-1>", _removeProcedureFromList)
+				index+=1
+	
+	def __removeProcedureFromList(self, event=None, index=None):
+		self.procedures[index][1]=False
+		self._updateListbox()
+		self._populateChosenProcedures()
