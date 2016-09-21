@@ -42,6 +42,7 @@ class DbOperations:
 		data = self.loadData()
 		if not self.procedureExists(data, procedure):
 			data.procedures.append(JSONDB.fromProcedure(procedure))
+			data.procedures.sort(key=lambda procedure: procedure["name"].lower())
 			dataToSave = data.toJson()
 			self.saveData(dataToSave)
 		else:
@@ -57,6 +58,7 @@ class DbOperations:
 			currentProcedure[0].price = procedure.price
 			currentProcedure[0].category = procedure.category
 			data.procedures[currentProcedure[1]] = JSONDB.fromProcedure(currentProcedure[0])
+		data.procedures.sort(key=lambda procedure: procedure["name"].lower())
 		dataToSave = data.toJson()
 		self.saveData(dataToSave)		
 	

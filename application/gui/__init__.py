@@ -14,7 +14,7 @@ class Gui:
 		self.dbHandler = jsondb.DbOperations(pathToDB)
 		self.applicationRoot = tk.Tk()
 		self.applicationRoot.title("Specijalna bolnica za medicinsku rehabilitaciju Varazdinske Toplice")
-		self.applicationRoot.geometry(self.size)
+		#self.applicationRoot.geometry(self.size)
 		self.applicationRoot.resizable(False, False)
 		window = MainWindow(self.applicationRoot, self.dbHandler)
 		self.applicationRoot.mainloop()

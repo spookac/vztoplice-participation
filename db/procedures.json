@@ -3,60 +3,466 @@
     "participation-percentage": 20.0,
     "procedures": [
         {
-            "category": null,
-            "hospital-price": 8,
-            "hzzo-score": 0.29,
-            "id": "LB002",
-            "name": "Va\u0111enje krvi - kapilarno"
+            "category": "Plinovi u krvi",
+            "hospital-price": 100.0,
+            "hzzo-score": 0.65,
+            "id": "LB218",
+            "name": "ABS"
         },
         {
-            "category": null,
-            "hospital-price": 0,
-            "hzzo-score": 0.19,
-            "id": "LB001",
-            "name": "Uzimanje urina"
-        },
-        {
-            "category": "None",
-            "hospital-price": 20.0,
-            "hzzo-score": 0.29,
-            "id": "LB003",
-            "name": "Va\u0111enje krvi - vensko"
+            "category": "Koagulacija",
+            "hospital-price": 71.0,
+            "hzzo-score": 1.67,
+            "id": "LK018",
+            "name": "D-Dimeri"
         },
         {
             "category": "Metaboliti",
-            "hospital-price": 15,
+            "hospital-price": 15.0,
+            "hzzo-score": 0.22,
+            "id": "LB047",
+            "name": "dU, U-Acidum uricium"
+        },
+        {
+            "category": "Elektroliti",
+            "hospital-price": 15.0,
+            "hzzo-score": 0.23,
+            "id": "LB208",
+            "name": "Du,U-Natrij"
+        },
+        {
+            "category": "Proteini",
+            "hospital-price": 30.0,
+            "hzzo-score": 0.23,
+            "id": "LB245",
+            "name": "dU,U-Proteini"
+        },
+        {
+            "category": "Elektroliti",
+            "hospital-price": 42.0,
+            "hzzo-score": 0.28,
+            "id": "LB211",
+            "name": "dU-Kalcij"
+        },
+        {
+            "category": "Elektroliti",
+            "hospital-price": 15.0,
+            "hzzo-score": 0.23,
+            "id": "LB201",
+            "name": "dU-Kalij"
+        },
+        {
+            "category": "Elektroliti",
+            "hospital-price": 0.0,
+            "hzzo-score": 0.23,
+            "id": "LB204",
+            "name": "dU-Kloridi"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 15.0,
+            "hzzo-score": 0.21,
+            "id": "LB044",
+            "name": "dU-Kreatinin"
+        },
+        {
+            "category": "Pretrage fecesa",
+            "hospital-price": 30.0,
+            "hzzo-score": 1.18,
+            "id": "LM137",
+            "name": "F-Mikroskopski pregled na parazite"
+        },
+        {
+            "category": "Pretrage fecesa",
+            "hospital-price": 33.0,
+            "hzzo-score": 0.21,
+            "id": "LB579",
+            "name": "F-Okultno krvarenje"
+        },
+        {
+            "category": "Hematologija",
+            "hospital-price": 25.0,
+            "hzzo-score": 0.49,
+            "id": "LB014",
+            "name": "K-DKS"
+        },
+        {
+            "category": "Hematologija",
+            "hospital-price": 25.0,
+            "hzzo-score": 0.31,
+            "id": "LB010",
+            "name": "K-Retikulociti"
+        },
+        {
+            "category": "Hematologija",
+            "hospital-price": 20.0,
+            "hzzo-score": 0.21,
+            "id": "LB008",
+            "name": "K-Sedimentacija eritrocita"
+        },
+        {
+            "category": "Koagulacija",
+            "hospital-price": 52.0,
+            "hzzo-score": 0.45,
+            "id": "LK006",
+            "name": "P-APTV"
+        },
+        {
+            "category": "Koagulacija",
+            "hospital-price": 41.0,
+            "hzzo-score": 0.45,
+            "id": "LK003",
+            "name": "P-Protrombinsko vrijeme INR"
+        },
+        {
+            "category": "Hematologija",
+            "hospital-price": 46.0,
+            "hzzo-score": 0.67,
+            "id": "LB005",
+            "name": "Rad na hematolo\u0161kom analizatoru"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 48.0,
+            "hzzo-score": 0.23,
+            "id": "LB546",
+            "name": "S, U-Klirens kreatinina"
+        },
+        {
+            "category": "Enzimi",
+            "hospital-price": 21.0,
+            "hzzo-score": 0.23,
+            "id": "LB113",
+            "name": "S,-Amilaza"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 15.0,
+            "hzzo-score": 0.22,
+            "id": "LB046",
+            "name": "S-Acidum uricium"
+        },
+        {
+            "category": "Enzimi",
+            "hospital-price": 14.0,
+            "hzzo-score": 0.21,
+            "id": "LB112",
+            "name": "S-ALP"
+        },
+        {
+            "category": "Enzimi",
+            "hospital-price": 14.0,
+            "hzzo-score": 0.21,
+            "id": "LB111",
+            "name": "S-ALT"
+        },
+        {
+            "category": "Specifi\u010dni proteini",
+            "hospital-price": 110.7,
+            "hzzo-score": 2.41,
+            "id": "LB730",
+            "name": "S-Anti CCP"
+        },
+        {
+            "category": "Specifi\u010dni proteini",
+            "hospital-price": 45.0,
+            "hzzo-score": 0.57,
+            "id": "LB708",
+            "name": "S-ASO"
+        },
+        {
+            "category": "Enzimi",
+            "hospital-price": 14.0,
+            "hzzo-score": 0.21,
+            "id": "LB118",
+            "name": "S-AST"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 13.0,
+            "hzzo-score": 0.23,
+            "id": "LB039",
+            "name": "S-Bilirubin-direktni"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 13.0,
+            "hzzo-score": 0.21,
+            "id": "LB038",
+            "name": "S-Bilirubin-ukupni"
+        },
+        {
+            "category": "Enzimi",
+            "hospital-price": 18.0,
+            "hzzo-score": 0.24,
+            "id": "LB122",
+            "name": "S-CK"
+        },
+        {
+            "category": "Specifi\u010dni proteini",
+            "hospital-price": 33.0,
+            "hzzo-score": 0.48,
+            "id": "LB243",
+            "name": "S-CRP"
+        },
+        {
+            "category": "Proteini",
+            "hospital-price": 49.0,
+            "hzzo-score": 0.89,
+            "id": "LB277",
+            "name": "S-Elektroforeza proteina"
+        },
+        {
+            "category": "Elektroliti",
+            "hospital-price": 13.0,
+            "hzzo-score": 0.24,
+            "id": "LB198",
+            "name": "S-Fosfor"
+        },
+        {
+            "category": "Tumorski markeri",
+            "hospital-price": 165.0,
+            "hzzo-score": 1.18,
+            "id": "LB328",
+            "name": "S-fPSA"
+        },
+        {
+            "category": "Enzimi",
+            "hospital-price": 18.0,
+            "hzzo-score": 0.21,
+            "id": "LB120",
+            "name": "S-GGT"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 15.0,
             "hzzo-score": 0.21,
             "id": "LB041",
             "name": "S-Glukoza"
         },
         {
-            "category": "Metaboliti",
-            "hospital-price": 63,
-            "hzzo-score": 0.67,
-            "id": "LB553",
-            "name": "S-OGTT"
-        },
-        {
             "category": "Lipidogram",
-            "hospital-price": 63,
+            "hospital-price": 27.0,
             "hzzo-score": 0.24,
-            "id": "LB305",
-            "name": "S-Trigliceridi"
+            "id": "LB301",
+            "name": "S-HDL-kolesterol"
+        },
+        {
+            "category": "Elektroliti",
+            "hospital-price": 14.0,
+            "hzzo-score": 0.24,
+            "id": "LB199",
+            "name": "S-Kalcij"
+        },
+        {
+            "category": "Elektroliti",
+            "hospital-price": 15.0,
+            "hzzo-score": 0.23,
+            "id": "LB200",
+            "name": "S-Kalij"
+        },
+        {
+            "category": "Elektroliti",
+            "hospital-price": 14.0,
+            "hzzo-score": 0.23,
+            "id": "LB203",
+            "name": "S-Kloridi"
         },
         {
             "category": "Lipidogram",
-            "hospital-price": 14,
+            "hospital-price": 14.0,
             "hzzo-score": 0.24,
             "id": "LB302",
             "name": "S-Kolesterol-ukupni"
         },
         {
-            "category": "None",
-            "hospital-price": 22.5,
-            "hzzo-score": 0.51,
-            "id": "LB998",
-            "name": "\u010celo moje malo, \u0111ava te odni'a jo\u0161 tri puta"
+            "category": "Metaboliti",
+            "hospital-price": 13.0,
+            "hzzo-score": 0.21,
+            "id": "LB043",
+            "name": "S-Kreatinin"
+        },
+        {
+            "category": "Enzimi",
+            "hospital-price": 18.0,
+            "hzzo-score": 0.2,
+            "id": "LB123",
+            "name": "S-LDH"
+        },
+        {
+            "category": "Lipidogram",
+            "hospital-price": 18.0,
+            "hzzo-score": 0.24,
+            "id": "LB303",
+            "name": "S-LDL-kolesterol"
+        },
+        {
+            "category": "Elektroliti",
+            "hospital-price": 15.0,
+            "hzzo-score": 0.23,
+            "id": "LB206",
+            "name": "S-Natrij"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 63.0,
+            "hzzo-score": 0.67,
+            "id": "LB553",
+            "name": "S-OGGT"
+        },
+        {
+            "category": "Tumorski markeri",
+            "hospital-price": 165.0,
+            "hzzo-score": 1.18,
+            "id": "LB327",
+            "name": "S-PSA"
+        },
+        {
+            "category": "Specifi\u010dni proteini",
+            "hospital-price": 45.0,
+            "hzzo-score": 0.52,
+            "id": "LI015",
+            "name": "S-RF-Lateks"
+        },
+        {
+            "category": "Specifi\u010dni proteini",
+            "hospital-price": 45.0,
+            "hzzo-score": 0.0,
+            "id": "NOCODE02",
+            "name": "S-RF-Waller Rose"
+        },
+        {
+            "category": "Mikroelementi",
+            "hospital-price": 0.0,
+            "hzzo-score": 0.0,
+            "id": "NOCODE01",
+            "name": "S-Saturacija transferina"
+        },
+        {
+            "category": "Hormoni",
+            "hospital-price": 77.0,
+            "hzzo-score": 0.83,
+            "id": "LB350",
+            "name": "S-T3"
+        },
+        {
+            "category": "Hormoni",
+            "hospital-price": 77.0,
+            "hzzo-score": 0.83,
+            "id": "LB348",
+            "name": "S-T4"
+        },
+        {
+            "category": "Mikroelementi",
+            "hospital-price": 42.0,
+            "hzzo-score": 0.26,
+            "id": "LB222",
+            "name": "S-TIBC"
+        },
+        {
+            "category": "Lipidogram",
+            "hospital-price": 18.0,
+            "hzzo-score": 0.24,
+            "id": "LB305",
+            "name": "S-Trigliceridi"
+        },
+        {
+            "category": "Hormoni",
+            "hospital-price": 77.0,
+            "hzzo-score": 0.83,
+            "id": "LB343",
+            "name": "S-TSH"
+        },
+        {
+            "category": "Mikroelementi",
+            "hospital-price": 18.0,
+            "hzzo-score": 0.26,
+            "id": "LB223",
+            "name": "S-UIBC"
+        },
+        {
+            "category": "Proteini",
+            "hospital-price": 13.0,
+            "hzzo-score": 0.12,
+            "id": "LB244",
+            "name": "S-Ukupni proteini"
+        },
+        {
+            "category": "Mikroelementi",
+            "hospital-price": 18.0,
+            "hzzo-score": 0.24,
+            "id": "LB221",
+            "name": "S-\u017deljezo"
+        },
+        {
+            "category": "Urin",
+            "hospital-price": 40.0,
+            "hzzo-score": 0.34,
+            "id": "LB558",
+            "name": "Sediment urina"
+        },
+        {
+            "category": "Urin",
+            "hospital-price": 40.0,
+            "hzzo-score": 0.26,
+            "id": "LB560",
+            "name": "Test traka"
+        },
+        {
+            "category": "Proteini",
+            "hospital-price": 165.0,
+            "hzzo-score": 1.25,
+            "id": "LB286",
+            "name": "Troponin "
+        },
+        {
+            "category": "Enzimi",
+            "hospital-price": 21.0,
+            "hzzo-score": 0.21,
+            "id": "LB116",
+            "name": "U-Amilaza"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 14.0,
+            "hzzo-score": 0.21,
+            "id": "LB048",
+            "name": "U-Ureja"
+        },
+        {
+            "category": null,
+            "hospital-price": 0.0,
+            "hzzo-score": 0.19,
+            "id": "LB001",
+            "name": "Uzimanje urina"
+        },
+        {
+            "category": null,
+            "hospital-price": 8.0,
+            "hzzo-score": 0.29,
+            "id": "LB002",
+            "name": "Va\u0111enje krvi-kapilarno"
+        },
+        {
+            "category": null,
+            "hospital-price": 18.0,
+            "hzzo-score": 0.29,
+            "id": "LB003",
+            "name": "Va\u0111enje krvi-vensko"
+        },
+        {
+            "category": "Metaboliti",
+            "hospital-price": 0.0,
+            "hzzo-score": 0.07,
+            "id": "LB564",
+            "name": "Volumen mokra\u0107e"
+        },
+        {
+            "category": "Koagulacija",
+            "hospital-price": 31.0,
+            "hzzo-score": 0.57,
+            "id": "LK012",
+            "name": "Vrijeme krvarenja"
         }
     ]
 }
