@@ -19,6 +19,7 @@ class MainWindow(tk.Frame):
 		self.listBox = None
 		self.chosenFrame=None
 		self.chosenProcedures = []
+		self.currentScrollBarPosition = (0.0, 0.0)
 		
 		#Prices
 		self.priceHzzo = StringVar()
@@ -69,15 +70,15 @@ class MainWindow(tk.Frame):
 		self.master.config(menu = menubar)
 	
 	def body(self, master):
-		tk.Label(master, text = "Kliknite dvaput na pretragu kako biste ju dodali u izračun", foreground = "red").grid(row = 0, column = 0, sticky = "w", columnspan=2, in_=master)
+		tk.Label(master, text = "Kliknite na pretragu kako biste ju dodali u izračun", foreground = "red").grid(row = 0, column = 0, sticky = "w", columnspan=2, in_=master)
 		frameListBox = tk.Frame(master)
 		self.listBox = tk.Listbox(frameListBox, width=40, height=15)
-		self.listBox.bind("<Double-Button-1>", self._addProcedureToList)
-		scrollbar = tk.Scrollbar(frameListBox)
-		scrollbar.grid(row=0, column=1, sticky="nsw")
+		self.listBox.bind("<ButtonRelease-1>", self._addProcedureToList)
+		self.scrollbar = tk.Scrollbar(frameListBox)
+		self.scrollbar.grid(row=0, column=1, sticky="nsw")
 		self.listBox.grid(in_=frameListBox, sticky = "w", row=0, column=0)
-		self.listBox.config(yscrollcommand = scrollbar.set)
-		scrollbar.config(command=self.listBox.yview)
+		self.listBox.config(yscrollcommand = self.scrollbar.set)
+		self.scrollbar.config(command=self.listBox.yview)
 		frameListBox.grid(row=1, column=0, sticky="nw", in_=master)
 		tk.Label(master, text = "Odabrane pretrage").grid(row=0, column=1, sticky="n")
 		self.chosenFrame = tk.Frame(master, width=310)
@@ -137,16 +138,21 @@ class MainWindow(tk.Frame):
 		self._updatePrices()
 		self._updateListbox()
 		self._populateChosenProcedures()
+		self.listBox.yview_moveto(0) #Reset scrollbar position
 	
 	def _getFactors(self):
 		self.hzzobod = self.dbHandler.getHzzoBod()
 		self.participation = self.dbHandler.getParticipationPercentage()
 	
 	def _addProcedureToList(self, event=None):
-		lbIndex = int(self.listBox.curselection()[0])
-		realIndex = self.listBoxIndexes[lbIndex]
-		self.procedures[realIndex][1]=True
-		self.chosenProcedures.append(self.procedures[realIndex][0].id)
+		try:
+			lbIndex = int(self.listBox.curselection()[0])
+			realIndex = self.listBoxIndexes[lbIndex]
+			self.procedures[realIndex][1]=True
+			self.chosenProcedures.append(self.procedures[realIndex][0].id)
+			self.currentScrollBarPosition = self.scrollbar.get() #Get current scrollbar position
+		except IndexError:
+			pass
 		self._updatePrices()
 		self._updateListbox()
 		self._populateChosenProcedures()
@@ -167,6 +173,7 @@ class MainWindow(tk.Frame):
 			
 	def __removeProcedureFromList(self, event=None, index=None):
 		self.procedures[index][1]=False
+		self.chosenProcedures = [procId for procId in self.chosenProcedures if procId != self.procedures[index][0].id]
 		self._updatePrices()
 		self._updateListbox()
 		self._populateChosenProcedures()
@@ -178,6 +185,7 @@ class MainWindow(tk.Frame):
 			if not procedure[1]:
 				self.listBox.insert("end",procedure[0])
 				self.listBoxIndexes.append(procedure[2])
+		self.listBox.yview_moveto(self.currentScrollBarPosition[0]) #Set scrollbar position
 	
 	def _populateChosenProcedures(self):
 		index = 0
@@ -191,7 +199,7 @@ class MainWindow(tk.Frame):
 					return self.__removeProcedureFromList(event,index)
 				w = tk.Label(self.chosenFrame, text = "Obriši", foreground="blue", cursor="hand2")
 				w.grid(row=index, column=2, sticky="ne")
-				w.bind("<Button-1>", _removeProcedureFromList) #bind to internal method
+				w.bind("<ButtonRelease-1>", _removeProcedureFromList) #bind to internal method
 				index+=1
 	
 	def __calculatePrices(self):
