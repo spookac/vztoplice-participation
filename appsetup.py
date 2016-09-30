@@ -89,7 +89,9 @@ application = Target(
     # dest_base = "application",
 
     # Icon resources:[(resource_id, path to .ico file), ...]
-    # icon_resources=[(1, r"application.ico")]
+    icon_resources=[(1, r"icon/calc.ico")],
+	
+	dest_base="Izracun naplate",
 
     other_resources = [(RT_MANIFEST, 1, (manifest_template % dict(prog="application", level="asInvoker")).encode("utf-8")),
     # for bitmap resources, the first 14 bytes must be skipped when reading the file:
@@ -144,24 +146,30 @@ py2exe_options = dict(
 ##    excludes = "tof_specials Tkinter".split(),
 ##    ignores = "dotblas gnosis.xml.pickle.parsers._cexpat mx.DateTime".split(),
 ##    dll_excludes = "MSVCP90.dll mswsock.dll powrprof.dll".split(),
-    optimize=0,
+    optimize=2,
     compressed=True, # uncompressed may or may not have a faster startup
     bundle_files=2,
     dist_dir='dist',
     )
 
+DATA_FILES = [('db',['db/procedures.json']),('icon',['icon/calc.ico'])]
 
 # Some options can be overridden by command line options...
 
-setup(name="name",
-      # console based executables
-      console=[application],
+setup(
+    name="Izracun naplate",
+    version="0.1.0",
+	description="Aplikacija za izracun naplate participacije",
+	author="Tomislav Fotak",
+    # console based executables
+    console=[],
 
-      # windows subsystem executables (no console)
-      windows=['application.py'],
+    # windows subsystem executables (no console)
+    windows=[application],
 
-      # py2exe options
-      zipfile=None,
-      options={"py2exe": py2exe_options},
-      )
+    # py2exe options
+	data_files = DATA_FILES,
+    zipfile=None,
+    options={"py2exe": py2exe_options},
+)
 
