@@ -16,14 +16,14 @@ class Target(object):
         # that make sense:
         
         # The 'version' attribute MUST be defined, otherwise no versioninfo will be built:
-        # self.version = "1.0"
+        self.version = "0.1.0.0"
         
-        # self.company_name = "Company Name"
-        # self.copyright = "Copyright Company Name © 2013"
-        # self.legal_copyright = "Copyright Company Name © 2013"
+        self.company_name = "TACIT, obrt za informacijske usluge"
+        self.copyright = "TACIT © 2016"
+        self.legal_copyright = "TACIT, obrt za informacijske usluge © 2016"
         # self.legal_trademark = ""
-        # self.product_version = "1.0.0.0"
-        # self.product_name = "Product Name"
+        self.product_version = "0.1.0.0"
+        self.product_name = "Izracun naplate"
 
         # self.private_build = "foo"
         # self.special_build = "bar"
